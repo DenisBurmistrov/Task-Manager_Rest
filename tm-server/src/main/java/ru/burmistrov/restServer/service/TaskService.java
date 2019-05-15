@@ -52,6 +52,7 @@ public class TaskService implements ITaskService {
         task.setUserId(userId);
         task.setStatus(Status.SCHEDULED);
         taskRepository.save(task);
+        taskDto.setId(task.getId());
         return taskDto;
     }
 

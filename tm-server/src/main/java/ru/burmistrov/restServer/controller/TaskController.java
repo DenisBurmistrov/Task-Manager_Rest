@@ -48,7 +48,7 @@ public class TaskController {
 
     @GetMapping(value = "/list/{projectId}", produces = MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasAuthority('COMMON_USER') or hasAuthority('ADMINISTRATOR')")
-    public List<TaskDto> findAllProjects(@PathVariable @NotNull final String projectId, @NotNull final Authentication authentication) throws ParseException {
+    public List<TaskDto> findAllTasks(@PathVariable @NotNull final String projectId, @NotNull final Authentication authentication) throws ParseException {
         @NotNull final CustomUser customUser = (CustomUser) authentication.getPrincipal();
         return taskService.findAllInProject(Objects.requireNonNull(customUser.getUser()).getId(), projectId);
     }
